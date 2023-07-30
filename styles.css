@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+
+body {
+  margin: 0px;
+  font-family: 'Gamja Flower';
+}
+
+.title-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: coral;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.title {
+  flex: 4;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.email {
+  flex: 1;
+}
+
+.static {
+  flex: 1;
+  font-size: 1.3rem;  
+}
+
+.static-toggle {
+  padding-left: 3px;
+  padding-right: 3px;
+  border: 1px solid coral;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.static-enabled {
+  color: white;
+  background-color: rgb(63, 63, 63);
+  border: 1px solid black;
+
+}
+
+.img-icon {
+  height: 50px;
+  width: 50px;
+  background-image: url('./img/email1.png');
+  background-size: 50px 50px;
+}
+
+.img-icon:hover {
+  background-image: url('./img/email2.png');
+}
+
+.root {
+  font-size: 1.3rem;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1.5fr;
+}
+
+.original-title, .finished-title, .highlights-title {
+  text-align: center;
+  border-bottom: 2px solid salmon;
+}
+
+.original-title {
+  background-color: rgb(255, 212, 195);
+}
+
+.finished-title, .highlights-title {
+  padding-top: 5px;
+}
+
+.highlights-title {
+  background-color: rgb(255, 212, 195);
+}
+
+/*.original {
+  width: 100%;
+}*/
+
+.original, .finished {
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.highlights {
+  padding-top: 10px;
+  opacity: 0;
+}
+
+img {
+  width: 400px;
+  border-radius: 10px;
+  opacity: 0;
+}
+
+.img-activate {
+  opacity: 1;
+  transition: opacity 2s;
+}
+
+
+@media (max-width: 650px) {
+  img { width: 130px; }
+}
+
+@media (min-width: 651px) and (max-width: 1200px) {
+  img { width: 200px; }
+}
+
+.prueba {
+  cursor: pointer;
+  opacity: 0;
+}
+
+.prueba:hover {
+  opacity: 1;
+  transition: opacity 3s;
+}
