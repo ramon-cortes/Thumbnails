@@ -34,4 +34,12 @@ export const data = [
       'Title with text effect'
     ]
   },
-]
+  {
+    original: './img/original05.png',
+    finished: './img/finished05.png',
+    highlights: [
+      '3D text',
+      '3D Logo'
+    ]
+  }
+];
