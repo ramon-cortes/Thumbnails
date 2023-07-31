@@ -1,8 +1,13 @@
 import { data } from "./data.js";
+const state = {
+  staticView: false,
+  line: 0
+}
 let staticView = false;
 const original = document.getElementById('original');
 const finished = document.getElementById('finished');
 const highlights = document.getElementById('highlights');
+const staticDiv = document.getElementById('static-div');
 
 //console.log(data);
 
@@ -10,50 +15,71 @@ function getRandom() {
   return Math.round(Math.random() * (data.length - 1));
 }
 
+function makeUl(i) {
+  const ul = document.createElement('ul');
+  ul.id = 'highlight-list';
+  for (let j = 0; j < data[i].highlights.length; j++) {
+    const li = document.createElement('li');
+    li.innerText = data[i].highlights[j];
+    ul.appendChild(li);
+  }
+  return ul;
+}
+
 
 function staticToggle() {
   const staticDiv = document.getElementById('static');
-  if (staticView) {
+  if (state.staticView) {
     staticDiv.classList.remove('static-enabled');
   } else {
     staticDiv.classList.add('static-enabled');
   }
-  staticView = !staticView;
+  state.staticView = !state.staticView;
 }
 document.getElementById('static').addEventListener('click', staticToggle);
 
 function run() {
-  if (!staticView) {
+  if (!state.staticView) {
+    staticDiv.innerHTML = '';
     original.innerHTML = '';
     finished.innerHTML = '';
     highlights.innerHTML = '';
     highlights.classList.remove('img-activate')
 
-    const index = getRandom();
-    original.innerHTML = `<img id="img-original" src="${data[index].original}">`;
-    finished.innerHTML = `<img id="img-finished" src="${data[index].finished}">`;  
-    const ul = document.createElement('ul');
-    ul.id = 'highlight-list';
-    for (let i = 0; i < data[index].highlights.length; i++) {
-      const li = document.createElement('li');
-      li.innerText = data[index].highlights[i];
-      ul.appendChild(li);
-    }
-    highlights.appendChild(ul);
+    //const index = getRandom();
+    original.innerHTML = `<img id="img-original" src="${data[state.line].original}">`;
+    finished.innerHTML = `<img id="img-finished" src="${data[state.line].finished}">`;    
+    highlights.appendChild(makeUl(state.line));
 
     setTimeout(() => document.getElementById('img-original').classList.add('img-activate'), 300);
-    setTimeout(() => document.getElementById('img-finished').classList.add('img-activate'), 1800);
-    setTimeout(() => highlights.classList.add('img-activate'), 3100);
+    setTimeout(() => document.getElementById('img-finished').classList.add('img-activate'), 1500);
+    setTimeout(() => highlights.classList.add('img-activate'), 2800);
+
+    state.line < data.length - 1 ? state.line++ : state.line = 0;
+    
   } else {
     //AQUÍ:
-    original.innerHTML = 'PÁGINA ESTÁTICA AQUÍ';
+    original.innerHTML = '';
     finished.innerHTML = '';
     highlights.innerHTML = '';
+    staticDiv.innerHTML = '';
+    const table = document.createElement('table');
+
+    for (let i = 0; i < data.length; i++) {
+      const tr = table.insertRow();
+      const cell1 = tr.insertCell();
+      cell1.innerHTML = `<img class="img-activate" src="${data[i].original}"><br>`;
+      const cell2 = tr.insertCell();
+      cell2.innerHTML = `<img class="img-activate" src="${data[i].finished}"><br>`;
+      cell1.className = 'table-photos';
+      cell2.className = 'table-photos';
+      const cell3 = tr.insertCell();
+      cell3.appendChild(makeUl(i));
+      cell3.className = 'table-highlights';
+    }
+    staticDiv.appendChild(table);    
   }
-
-  
-
 }
 
 run();
-let id = setInterval(run, 9000);
+let id = setInterval(run, 8500);
