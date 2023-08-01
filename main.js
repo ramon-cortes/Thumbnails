@@ -83,4 +83,4 @@ function run() {
 }
 
 run();
-let id = setInterval(run, 8000);
+let id = setInterval(run, 7000);
