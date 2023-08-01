@@ -41,5 +41,14 @@ export const data = [
       '3D text',
       '3D Logo'
     ]
+  },
+  {
+    original: './img/original06.png',
+    finished: './img/finished06.png',
+    highlights: [
+      '3D Logo',
+      '3D Text with shadow',
+      'Superposed image'
+    ]
   }
 ];

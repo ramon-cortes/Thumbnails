@@ -1,7 +1,7 @@
 import { data } from "./data.js";
 const state = {
   staticView: false,
-  line: 0
+  line: data.length - 1
 }
 let staticView = false;
 const original = document.getElementById('original');
@@ -51,21 +51,22 @@ function run() {
     finished.innerHTML = `<img id="img-finished" src="${data[state.line].finished}">`;    
     highlights.appendChild(makeUl(state.line));
 
-    setTimeout(() => document.getElementById('img-original').classList.add('img-activate'), 300);
-    setTimeout(() => document.getElementById('img-finished').classList.add('img-activate'), 1500);
-    setTimeout(() => highlights.classList.add('img-activate'), 2800);
+    // Temporizador
+    setTimeout(() => document.getElementById('img-original').classList.add('img-activate'), 200);
+    setTimeout(() => document.getElementById('img-finished').classList.add('img-activate'), 1200);
+    setTimeout(() => highlights.classList.add('img-activate'), 2200);
 
-    state.line < data.length - 1 ? state.line++ : state.line = 0;
+    state.line > 0 ? state.line-- : state.line = data.length - 1;
     
   } else {
-    //AQUÍ:
+    // Vista estática
     original.innerHTML = '';
     finished.innerHTML = '';
     highlights.innerHTML = '';
     staticDiv.innerHTML = '';
     const table = document.createElement('table');
 
-    for (let i = 0; i < data.length; i++) {
+    for (let i = data.length - 1; i >= 0; i--) {
       const tr = table.insertRow();
       const cell1 = tr.insertCell();
       cell1.innerHTML = `<img class="img-activate" src="${data[i].original}"><br>`;
@@ -82,4 +83,4 @@ function run() {
 }
 
 run();
-let id = setInterval(run, 8500);
+let id = setInterval(run, 8000);
