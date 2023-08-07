@@ -50,5 +50,14 @@ export const data = [
       '3D Text with shadow',
       'Superposed image'
     ]
+  },
+  {
+    original: './img/original07.jpg',
+    finished: './img/finished07.jpg',
+    highlights: [
+      '3D Frame',
+      '3D Logo',
+      'Carved title'
+    ]
   }
 ];
