@@ -59,5 +59,14 @@ export const data = [
       '3D Logo',
       'Carved title'
     ]
+  },
+  {
+    original: './img/original08.png',
+    finished: './img/finished08.png',
+    highlights: [
+      'Shadow Custom 3D Title',
+      'Left banner with YT logo',
+      'Flashy background'
+    ]
   }
 ];
