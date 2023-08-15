@@ -64,6 +64,15 @@ export const data = [
     original: './img/original08.png',
     finished: './img/finished08.png',
     highlights: [
+      'Carved 3D logo',
+      '3D titles',
+      'Images superposed'
+    ]
+  },
+  {
+    original: './img/original09.png',
+    finished: './img/finished09.png',
+    highlights: [
       'Shadow Custom 3D Title',
       'Left banner with YT logo',
       'Flashy background'
